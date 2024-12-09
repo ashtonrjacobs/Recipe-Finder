@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="static\style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ingredient-Based Recipe Finder</h1>
+        <form method="POST" action="/">
+            <input type="text" name="ingredients" id="ingredients-input" placeholder="Enter ingredients, comma-separated">
+            <button type="submit">Search Recipes</button>
+        </form>
+        <div id="results">
+            {% if results %}
+                <h2>Matching Recipes:</h2>
+                {% for recipe in results %}
+                    <div class="recipe">
+                        <h2>{{ recipe.recipe_name }}</h2>
+                        <p>Ingredients: {{ recipe.ingredients }}</p>
+                        <p>Similarity: {{ recipe.similarity }}</p>
+                    </div>
+                {% endfor %}
+            {% elif results is not none %}
+                <p>No matching recipes found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
